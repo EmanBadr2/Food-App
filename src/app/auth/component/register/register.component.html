@@ -1,0 +1,223 @@
+
+<section>
+  <div class="container ">
+    <div class="row vh-100 justify-content-center align-items-center ">
+      <div class="col-md-10">
+        <div class="auth-form  ">
+
+          <div class="logo text-center">
+            <img src="../../assets/img/logoLOG.png" alt="xxooff" class="">
+          </div>
+
+          <div class="title p-2">
+            <h2>Register</h2>
+            <p> Welcome Back! Please enter your details</p>
+          </div>
+
+          <form  class="" [formGroup]="registerForm"  (ngSubmit)="sendData(registerForm)">
+            <!-- -------- -->
+            <div class="uploadImg mb-2 ">
+              <div class="center">
+                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)"   >
+                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector"  >
+                      <button type="button" class=" w-100 h-100" (click)="openFileSelector() ">
+                        <i class="fa-solid fa-upload" *ngIf="relativePath==''" ></i>
+                        <img [src]="relativePath" alt="xx"  *ngIf="relativePath"  class="bg-danger w-100">
+                       </button>
+                    </ng-template>
+                </ngx-file-drop>
+                <!-- <div class="upload-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="upload-name-style">
+                            <tr *ngFor="let item of files; let i=index">
+                                <td><strong>{{ item.relativePath }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+            </div>
+
+            </div>
+            <!-- ----------- -->
+
+            <div class="row justify-content-between align-items-center  mt-2">
+              <div class="col-md-6">
+
+                <div class="mb-3">
+                <div class="input-group  ">
+                  <span class="input-group-text   border-top-0 border-bottom-0 border-start-0 "
+                   id="basic-addon1">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                  </span>
+                  <input type="text"
+                   class="form-control  border-top-0 border-bottom-0 border-end-0 "
+                  formControlName="userName" placeholder="userName"
+                   aria-label="userName"
+                   aria-describedby="basic-addon1">
+
+                </div>
+                    <!-- validators -->
+                         <div class="p-0 m-0 mb-2 " *ngIf="userName?.touched && userName?.errors  " >
+                                <p *ngIf="userName?.getError('required')"  class="m-0 text-danger" > userName is Required</p>
+                                <p  *ngIf="userName?.getError('minlength')"  class="m-0 text-danger" > minLength is 3</p>
+                                  <p  *ngIf="userName?.getError('maxlength')"  class="m-0 text-danger" > maxLength is 12  </p>
+                                </div>
+                    </div>
+
+
+              <div class="mb-3">
+                  <div class="input-group ">
+                  <span class="input-group-text   border-top-0 border-bottom-0 border-start-0  "
+                   id="basic-addon1">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                  </span>
+                  <input type="text"
+                   class="form-control  border-top-0 border-bottom-0 border-end-0 "
+                  formControlName="country" placeholder="country"
+                   aria-label="country"
+                   aria-describedby="basic-addon1">
+                </div>
+                    <!-- validators -->
+                    <div class="p-0 m-0 mx-1 mb-2 " *ngIf="country?.touched && country?.errors  " >
+                      <p *ngIf="country?.getError('required')"  class="m-0 text-danger" > country is Required</p>
+                      <p  *ngIf="country?.getError('minlength')"  class="m-0 text-danger" > minLength is 3</p>
+                      <p  *ngIf="country?.getError('maxlength')"  class="m-0 text-danger" > minLength is 9</p>
+
+                      </div>
+              </div>
+
+
+
+                <div class="mb-3">
+                  <div class="input-group ">
+                  <span class="input-group-text   border-top-0 border-bottom-0 border-start-0 "
+                   id="basic-addon1">
+                   <i class="fa-solid fa-lock"></i>
+                  </span>
+                  <input type="password"
+                   class="form-control  border-top-0 border-bottom-0 border-end-0 "
+                  formControlName="password" placeholder="password"
+                   aria-label="password"
+                   aria-describedby="basic-addon1">
+                </div>
+
+                  <!-- validators -->
+                            <div class="m-0 p-0 " *ngIf="password?.touched && password?.errors  " >
+                              <p *ngIf="password?.getError('required')"  class="m-0 text-danger" > password is Required</p>
+                              <p  *ngIf="password?.hasError('regexError')"  class="m-0 text-danger" >
+                                strong pass (uppercase &lowercase &number& special char) </p>
+                              </div>
+
+                 </div>
+
+           </div>
+
+           <div class="col-md-6">
+
+                <div class="mb-3">
+                <div class="input-group  ">
+                  <span class="input-group-text   border-top-0 border-bottom-0 border-start-0 "
+                   id="basic-addon1">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                  </span>
+                  <input type="email"
+                   class="form-control  border-top-0 border-bottom-0 border-end-0 "
+                  formControlName="email" placeholder="email"
+                   aria-label="email"
+                   aria-describedby="basic-addon1">
+                </div>
+                  <!-- validators -->
+                  <div class="p-0 m-0 mx-1 mb-2 " *ngIf="email?.touched && email?.errors  " >
+                    <p *ngIf="email?.getError('required')"  class="m-0  text-danger" > email is Required</p>
+                    <p  *ngIf="email?.getError('email')"  class="m-0  text-danger" > email InValid </p>
+                    </div>
+              </div>
+
+                <div class="mb-3">
+                      <div class="input-group  ">
+                  <span class="input-group-text   border-top-0 border-bottom-0 border-start-0 "
+                   id="basic-addon1">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                  </span>
+                  <input type="tel"
+                   class="form-control  border-top-0 border-bottom-0 border-end-0 "
+                  formControlName="phoneNumber" placeholder="phoneNumber"
+                   aria-label="phoneNumber"
+                   aria-describedby="basic-addon1">
+                </div>
+                                 <!-- validators -->
+                                 <div class="m-1 mx-2 p-0 " *ngIf="phoneNumber?.touched && phoneNumber?.errors  " >
+                                  <p *ngIf="phoneNumber?.getError('required')"  class="m-0 text-danger" > phoneNumber is Required</p>
+                                  <p  *ngIf="phoneNumber?.hasError('regexError')"  class="m-0 text-danger" >
+                                    InValid Phone Number </p>
+                                  </div>
+
+                </div>
+
+
+                <div class="mb-3">
+                   <div class="input-group  ">
+                  <span class="input-group-text   border-top-0 border-bottom-0 border-start-0 "
+                   id="basic-addon1">
+                   <i class="fa-solid fa-lock"></i>
+                  </span>
+                  <input [type]=" isHide?  'password' : 'text'"
+                   class="form-control  border-top-0 border-bottom-0 border-end-0 "
+                  formControlName="confirmPassword" placeholder="confirmPassword"
+                   aria-label="confirmPassword"
+                   aria-describedby="basic-addon1">
+                   <a (click)="( isHide =! isHide )" class="input-group-text border-0">
+                    <span class=" me-1 border-0" id="basic-addon1">
+                     <i  class="fa-regular " [class]=" isHide? 'fa-eye-slash' : 'fa-eye'"></i>
+                   </span>  </a>
+                </div>
+
+                               <!-- validators -->
+                <div class="m-0 mx-1 p-0 " *ngIf="confirmPassword?.touched && confirmPassword?.errors  " >
+                  <p *ngIf="confirmPassword?.getError('required')"  class="m-0 text-danger" > confirmPassword is Required</p>
+                  <p  *ngIf="confirmPassword?.hasError('regexError')"  class="m-0 text-danger" >
+                    strong pass (uppercase &lowercase &number& special char) </p>
+                    <p  *ngIf="confirmPassword?.getError('passMatch')" class="m-0 text-danger" > confirmPassword  not match </p>
+                  </div>
+
+                </div>
+
+             </div>
+            </div>
+
+
+
+
+
+
+      <div class=" d-flex justify-content-end align-items-center p-2">
+            <a routerLink="" class="second-link">login Now ?</a>
+          </div>
+
+          <div class="text-center p-2">
+            <button [disabled]="!registerForm.valid " class="primary-color w-100">Register</button>
+          </div>
+
+          </form>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    </div>
+
+
+</section>
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+

@@ -1,0 +1,40 @@
+section{
+  background-image: url(../.././../../assets/img/mainBgAuth.png);
+  background-size: cover;
+  height: 100vh;
+input{
+  background-color: #F7F7F7;
+}
+}
+// --------------
+// input.ng-invalid.ng-touched {
+//   background-color: rgba(255, 0, 0, 0.1);
+// }
+// input.ng-valid.ng-touched {
+//   border:  2px solid rgba(172, 255, 47, 0.649) ;
+// }
+
+// -----------------
+
+::ng-deep .ngx-file-drop__drop-zone {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+::ng-deep div.ngx-file-drop__drop-zone[_ngcontent-ng-c2614662205] {
+  border: none;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+
+
+}

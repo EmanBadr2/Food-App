@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+$main-color: #4AA35A  ;
+$main-fontfamily : Inter ;
+html{
+  font-family: $main-fontfamily;
+}
+
+.auth-form {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding:2rem 4rem;
+
+
+h2{
+  color: #494949 ;
+  font-size: 25px;
+  font-weight: 900;
+}
+p{
+  color: #49494999 ;
+  font-family: $main-fontfamily;
+}
+a{
+  text-decoration: none;
+  color: #3A3A3D;
+  &.second-link {
+    color: $main-color ;
+  }
+}
+
+button{
+  border: none;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  &.primary-color{
+    background-color: $main-color;
+    color: #fff;
+    &:hover{
+      opacity: .6 ;
+    }
+  }
+}
+
+}
+
