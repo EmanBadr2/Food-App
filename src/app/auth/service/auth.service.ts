@@ -9,6 +9,8 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
+userToken:any = localStorage.getItem('userToken')
+userGroup :any = localStorage.getItem('role')
 
 constructor(private _HttpClient:HttpClient ) {
   if (this.userToken !== null ) {
@@ -16,8 +18,6 @@ constructor(private _HttpClient:HttpClient ) {
   }
 
 }
-userToken:any = localStorage.getItem('userToken')
-userGroup :any = localStorage.getItem('role')
 
  getProfile(){
   let encoded :any =  localStorage.getItem('userToken');
@@ -26,11 +26,11 @@ userGroup :any = localStorage.getItem('role')
  }
 
   login(data:FormGroup):Observable<any>{
-    return this._HttpClient.post(`/api/v1/Users/Login` , data)
+    return this._HttpClient.post(`Users/Login` , data)
   }
 
   register(data:any):Observable<any>{
-    return this._HttpClient.post(`/api/v1/Users/Register` ,data )
+    return this._HttpClient.post(`Users/Register` ,data )
   }
 
 

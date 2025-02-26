@@ -1,10 +1,13 @@
-
+<!--   main layout --- navbar/sidebar/ admin or user -->
 <section  class="vh-100 w-100 overflow-hidden">
-  <div class="row">
+  <div class="row ">
   <div class="col-2"> <app-sidebar></app-sidebar>    </div>
   <div class="col-9">
-    <app-navbar></app-navbar>
-     <router-outlet></router-outlet>
+    <div class="">
+       <app-navbar></app-navbar>
+       <!-- Admin || User  -->
+       <router-outlet></router-outlet>
+    </div>
     </div>
 </div>
 </section>

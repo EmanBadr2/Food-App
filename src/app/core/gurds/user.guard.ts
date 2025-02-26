@@ -13,7 +13,7 @@ export class userGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if (this._AuthService.userToken !== null && this._AuthService.userGroup == "SystemUser" ) {
+      if (this._AuthService.userToken !== null && this._AuthService.userGroup== "SystemUser" ) {
          return true;
       }
       else{

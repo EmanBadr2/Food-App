@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Imenu } from 'src/app/core/interFaces/imenu';
 
@@ -8,7 +9,11 @@ import { Imenu } from 'src/app/core/interFaces/imenu';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  constructor(){}
+  constructor(private activatedRoute: ActivatedRoute) {
+  // title from url to access  active class
+   }
+
+
 
   menu : Imenu[] =[
     {
@@ -19,7 +24,7 @@ export class SidebarComponent {
     } ,
     {
       title: 'Users' ,
-      icon : 'fa-Users' ,
+      icon : 'fa-home' ,
       menuLink : '/dashboard' ,
       isActive:this.isAdmin() ,
      } ,
@@ -29,13 +34,14 @@ export class SidebarComponent {
      menuLink : '/dashboard' ,
      isActive: this.isAdmin()  ,
     } ,
-
     {
       title: 'Categories' ,
       icon : 'fa-home' ,
-      menuLink : '/dashboard' ,
+      menuLink : '/dashboard/admin/categories' ,
       isActive: this.isAdmin()  ,
      } ,
+
+
      {
       title: 'User Recipes' ,
       icon : 'fa-home' ,

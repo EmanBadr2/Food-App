@@ -11,8 +11,8 @@ export class adminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      
-      if (this._AuthService.userToken !== null && this._AuthService.userGroup == 'SuperAdmin' ) {
+
+      if (this._AuthService.userToken !== null && this._AuthService.userGroup== 'SuperAdmin' ) {
          return true;
       }
       else{
