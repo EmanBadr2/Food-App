@@ -1,0 +1,30 @@
+section
+{
+  font-family: Inter;
+  font-weight: 500;
+
+  .row{
+    background-color:rgba(248, 249, 251, 1);
+   height: 68px;
+   border-radius: 16px;
+   .input-group{
+    color: rgba(31, 38, 62, 1) ;
+    font-size: 15px;
+    line-height: 18.15px;
+    letter-spacing: 0px;
+   }
+
+   .end-side{
+    color: rgba(31, 56, 76, 1);
+    span{
+      font-size: 13px;
+    }
+
+   }
+
+
+
+
+    // }
+  }
+}

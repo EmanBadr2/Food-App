@@ -1,6 +1,6 @@
-<section>
+<section class="">
 
-<div class="page-title p-3">
+<div class="page-title ">
   <div class="row align-items-center justify-content-between ">
     <div class="col-8 px-3">
       <h3>Categories <span> item</span></h3>
@@ -12,19 +12,19 @@
   </div>
 </div>
 
-<div class=" page-content  p-3">
-  <div class="row align-items-center justify-content-between my-3 ">
-    <div class="col-8">
+<div class=" page-content  p-4">
+  <div class="row align-items-center justify-content-between  ">
+    <div class="col-8 ">
       <p class="p-0 m-0">Categories Table Details</p>
       <span class="px-2">You can check all details</span>
     </div>
-    <div class="col-4">
-       <button class=" primary-color">Add New Category</button>
+    <div class="col-4 text-end">
+       <button class=" primary-color" (click)="onOpenAddDialog()" >Add New Category</button>
        </div>
   </div>
 </div>
 
-<table  class=" w-100 table table-striped">
+<table  class=" w-100 table table-striped ">
 
   <thead>
     <th>Name</th>
@@ -41,16 +41,19 @@
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+        <mat-menu #menu="matMenu"  >
+
+          <button mat-menu-item (click)="onOpenViewDialog(category)" >
             <mat-icon>visibility</mat-icon>
             <span>View</span>
           </button>
-          <button mat-menu-item >
+
+          <button mat-menu-item (click)="onOpenEditDialog(category)">
             <mat-icon>edit_square</mat-icon>
             <span>Edit </span>
           </button>
-          <button mat-menu-item>
+
+          <button mat-menu-item  (click)="onOpenDeleteDialog(category)">
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>
@@ -62,6 +65,14 @@
   </tbody>
 
 </table>
+
+<mat-paginator  (page)="handelPageEvent($event)"
+              [length]="length"
+              [pageSize]="tableParams.pageSize"
+              [pageSizeOptions]="[3,4,5]"
+              [pageIndex]="tableParams.pageNumber-1"
+              aria-label="Select page">
+</mat-paginator>
 
 
 

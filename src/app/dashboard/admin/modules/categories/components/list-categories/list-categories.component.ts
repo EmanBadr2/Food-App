@@ -1,13 +1,14 @@
-import { Component  , inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
 import {ICategory, ICategoriesData, getCategoryParams  , DialogData} from './../../models/categories';
 
+import { AddCategoryComponent } from '../add-category/add-category.component';
+import { DeleteItemComponent } from 'src/app/dashboard/components/delete-item/delete-item.component';
 
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
-import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category.component';
-import { MaterialModule } from 'src/app/material/material.module';
-
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
 
 @Component({
@@ -16,42 +17,123 @@ import { MaterialModule } from 'src/app/material/material.module';
   styleUrls: ['./list-categories.component.scss']
 })
 export class ListCategoriesComponent {
-  constructor(private _CategoriesService:CategoriesService ,
-       public dialogRef: MatDialogRef<AddEditCategoryComponent>,
-        public dialog: MatDialog  ){
+  constructor(private _CategoriesService:CategoriesService , public dialog: MatDialog
+    , private _ToastrService:ToastrService ){
     this.onGetCategoriesData()
   }
-  animal!: string;
-  name!: string;
 
-  tableParams :getCategoryParams = { pageSize : 10 , pageNumber: 1} ;
+  tableParams :getCategoryParams = { pageSize : 4 , pageNumber: 1} ;
   categoriesList!:ICategoriesData[];
+
+  length !: number ;
 
   onGetCategoriesData(){
     this._CategoriesService.onGettingCategories(this.tableParams).subscribe({
       next :(res)=>{
-         console.log(res);
-         this.categoriesList = res.data
-         console.log( this.categoriesList);
-
-          // debugger
+           this.categoriesList = res.data
+           this.length= res.totalNumberOfRecords
+           this.tableParams.pageSize=res.pageSize
+           this.tableParams.pageNumber=res.pageNumber
       } ,
       error :()=>{ } ,
       complete :()=>{ } ,
     })
   }
-  onOpenAddEditDialog(){
 
-    // openDialog(): void {
-    //   const dialogRef = this.dialog.open(AddEditCategoryComponent, {
-    //     data: {name: this.name, animal: this.animal},
-    //   });
+// -----
+  onOpenAddDialog(){
+    const dialogRef =  this.dialog.open(AddCategoryComponent, {data:{name:''}})
+    dialogRef.afterClosed().subscribe(result => {
+      this.onAddCategory(result)
+    })
+
+  }
+
+  onAddCategory(categoryName:object|undefined){
+    this._CategoriesService.onAddCategory(categoryName).subscribe({
+      next :(res)=>{
+        this.onGetCategoriesData()
+        this._ToastrService.success(`Category ${res.name} Added Successfully`)
+     } ,
+     error :(err)=>{ this._ToastrService.error( 'Error in create Category' )} ,
+     complete :()=>{ } ,
+    })
+
+  }
+// --------
+
+  onOpenEditDialog(category:ICategoriesData){
+    let categoryId: number | undefined = category.id
+    let  oldCategoryName  = category.name
+    let  newCategoryName
+
+    const dialogRef = this.dialog.open(AddCategoryComponent ,{ data:{ name : oldCategoryName} }) ;
+
+    dialogRef.afterClosed().subscribe(result =>{
+      newCategoryName = result
+    this.onEditCategory(categoryId , newCategoryName)
+    })
 
 
   }
-// dialogRef.afterClosed().subscribe(result => {
-//         console.log('The dialog was closed');
-//         this.animal = result;
-//       });
+
+  onEditCategory(categoryId:number| undefined , updateCategoryName:object | undefined){
+
+    this._CategoriesService.onUpdateCategory(categoryId , updateCategoryName ).subscribe({
+      next :(res)=>{
+        this.onGetCategoriesData()
+        this._ToastrService.success(`Category ${res.name} Updated Successfully`)
+     } ,
+     error :(err)=>{ this._ToastrService.error( 'Error in Update Category' )} ,
+     complete :()=>{ } ,
+    })
+
+
+  }
+
+// ------------
+
+  onOpenViewDialog(category:ICategoriesData){
+    const dialogRef = this.dialog.open(AddCategoryComponent ,
+      { data: { name : category.name  , isReadOnly:true}  }) ;
+  }
+
+// ----------
+
+  onOpenDeleteDialog(category:ICategoriesData){
+    const dialogRef =  this.dialog.open(DeleteItemComponent, {data:{name:category.name , id:category.id }})
+
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(result);
+      if(result ){
+        this.onDeleteCategory(category.id)
+      }
+    })
+
+  }
+
+  onDeleteCategory(categoryId:number| undefined ){
+    this._CategoriesService.onDeleteCategory(categoryId).subscribe({
+      next :(res)=>{
+        this.onGetCategoriesData()
+        this._ToastrService.success(`Category  Deleted Successfully`)
+     } ,
+     error :(err)=>{ this._ToastrService.error( 'Error in Delete Category' )} ,
+     complete :()=>{ } ,
+    })
+  }
+
+
+ handelPageEvent(event:PageEvent){
+
+  this.tableParams = {
+    pageNumber: event.pageIndex+1 ,
+    pageSize : event.pageSize
+  }
+  this.length = event.length
+  this.onGetCategoriesData()
+
+  }
 
 }
+

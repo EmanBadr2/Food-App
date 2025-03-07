@@ -5,7 +5,6 @@ export interface ICategory{
     totalNumberOfRecords: number ,
     totalNumberOfPages: number ,
    data : ICategoriesData[] ,
-
 }
 
 export interface ICategoriesData {
@@ -22,7 +21,6 @@ export interface getCategoryParams {
 }
 
 // ----
-
 export interface DialogData {
   animal: string;
   name: string;

@@ -8,6 +8,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { SharedModule } from "../shared/shared.module";
+import { DeleteItemComponent } from './components/delete-item/delete-item.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -15,13 +17,17 @@ import { SharedModule } from "../shared/shared.module";
     DashboardComponent,
     HomeComponent ,
     SidebarComponent ,
-     NavbarComponent
+     NavbarComponent,
+     DeleteItemComponent
 
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
-]
+    SharedModule ,
+    
+    MaterialModule
+] ,
+
 })
 export class DashboardModule { }

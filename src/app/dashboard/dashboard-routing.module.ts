@@ -8,6 +8,7 @@ import { userGuard } from '../core/gurds/user.guard';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent ,
+    
    children:[
       { path: '', component: HomeComponent } ,
 

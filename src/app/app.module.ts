@@ -18,6 +18,8 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { HTTP_INTERCEPTORS, HttpClientModule  } from '@angular/common/http';
 
 import { GlobalInterceptor } from './core/interceptors/global.interceptor';
+import { MaterialModule } from './material/material.module';
+
 
 
 
@@ -40,7 +42,11 @@ import { GlobalInterceptor } from './core/interceptors/global.interceptor';
       timeOut:3000,
     }) ,
 
-    NgxFileDropModule
+    NgxFileDropModule ,
+    
+    MaterialModule
+
+
 
 
 

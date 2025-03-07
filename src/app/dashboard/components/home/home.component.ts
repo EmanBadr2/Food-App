@@ -11,6 +11,7 @@ Router
 export class HomeComponent {
 
     constructor( private _Router:Router , private _AuthService:AuthService ){}
+    
   userOrAdmin(){
     if (localStorage.getItem('userToken') !== null && localStorage.getItem('role') == 'SuperAdmin' ) {
       this._Router.navigate(['dashboard/admin'])

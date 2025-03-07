@@ -5,21 +5,28 @@ import { CategoriesRoutingModule } from './categories-routing.module';
 import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/app/material/material.module';
-import { AddEditCategoryComponent } from './components/add-edit-category/add-edit-category.component';
-
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ListCategoriesComponent,
-    AddEditCategoryComponent
+    AddCategoryComponent ,
+
+
   ],
   imports: [
     CommonModule,
     CategoriesRoutingModule ,
 
     HttpClientModule ,
-    MaterialModule
+    MaterialModule ,
 
-  ]
+    FormsModule,
+
+  ] ,
+  // exports:[
+  //   MaterialModule ,
+  // ]
 
 })
 export class CategoriesModule { }
