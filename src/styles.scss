@@ -79,5 +79,36 @@ button{
   }
 }
 
+.close-icon {
+  width:25px;
+  height:25px;
+  border: 2px solid rgba(204, 0, 0, 1) ;
+  color: rgba(204, 0, 0, 1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.mat-mdc-menu-item {
+  .mat-mdc-menu-submenu-icon{
+    color: #009247 !important;
+  }
+ }
+.mat-mdc-menu-item{
+  .mat-icon-no-color
+  {
+    color: #4AA35A!important;
+    
+}
+}
+
+
+
+
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

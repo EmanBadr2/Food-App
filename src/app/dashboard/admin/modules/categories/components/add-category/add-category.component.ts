@@ -12,12 +12,11 @@ export class AddCategoryComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data:any ,
    public dialogRef: MatDialogRef<AddCategoryComponent> ){ }
 
-
    onCloseDialog():void{
-    this.dialogRef.close({data: this.data.name});
+    this.dialogRef.close();
    }
 
-   
+
 
 
 

@@ -44,9 +44,10 @@ export class ListCategoriesComponent {
   onOpenAddDialog(){
     const dialogRef =  this.dialog.open(AddCategoryComponent, {data:{name:''}})
     dialogRef.afterClosed().subscribe(result => {
+      if(result){
       this.onAddCategory(result)
+      }
     })
-
   }
 
   onAddCategory(categoryName:object|undefined){
@@ -68,10 +69,12 @@ export class ListCategoriesComponent {
     let  newCategoryName
 
     const dialogRef = this.dialog.open(AddCategoryComponent ,{ data:{ name : oldCategoryName} }) ;
-
     dialogRef.afterClosed().subscribe(result =>{
-      newCategoryName = result
-    this.onEditCategory(categoryId , newCategoryName)
+      if(result){
+          newCategoryName = result
+         this.onEditCategory(categoryId , newCategoryName)
+      }
+
     })
 
 
@@ -122,7 +125,7 @@ export class ListCategoriesComponent {
      complete :()=>{ } ,
     })
   }
-
+// ---------------------
 
  handelPageEvent(event:PageEvent){
 
