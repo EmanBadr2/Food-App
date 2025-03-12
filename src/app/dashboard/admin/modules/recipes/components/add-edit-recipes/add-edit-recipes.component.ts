@@ -46,6 +46,7 @@ export class AddEditRecipesComponent implements OnInit  {
      // pass Data to Form (View & Edit)
     if(this.activeRecipeID){
       this.onGettingRecipeById(this.activeRecipeID)
+      console.log(this.recipeForm);
     }
     // View Mode
     if( this.isFormDisabled == 'true' ){ this.isViewMode= true }
@@ -78,8 +79,7 @@ export class AddEditRecipesComponent implements OnInit  {
   onGettingRecipeById(id:null |number){
     this._RecipesService.onGettingRecipeById(id).subscribe({
       next:(res)=>{
-// ---------
-        // console.log(res);
+        console.log(res);
         // let imgPath = res.imagePath
         // let mainImgPath:string = 'https://upskilling-egypt.com:3006/'+imgPath
         // console.log(mainImgPath);
@@ -90,11 +90,10 @@ export class AddEditRecipesComponent implements OnInit  {
            price : res.price,
            tagId :res.tag?.id ,
            categoriesIds:res.category.map((cat)=> cat.id) ,
-          //  recipeImage :
+           recipeImage : res.imagePath
           }
         );
-
-
+    
       } ,
       error:(err)=>{
         console.log(err);

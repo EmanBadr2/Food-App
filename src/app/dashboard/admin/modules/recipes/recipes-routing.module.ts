@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListRecipesComponent } from './components/list-recipes/list-recipes.component';
 import { AddEditRecipesComponent } from './components/add-edit-recipes/add-edit-recipes.component';
-import { NoDataComponent } from 'src/app/dashboard/components/no-data/no-data.component';
+import { NoDataComponent } from 'src/app/shared/components/no-data/no-data.component';
 
 const routes: Routes = [
   {path:'' , component:ListRecipesComponent } ,

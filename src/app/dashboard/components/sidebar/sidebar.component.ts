@@ -25,7 +25,7 @@ export class SidebarComponent {
     {
       title: 'Users' ,
       icon : 'fa-user-group' ,
-      menuLink : '/dashboard' ,
+      menuLink : '/dashboard/admin/users' ,
       isActive:this.isAdmin() ,
      } ,
     {

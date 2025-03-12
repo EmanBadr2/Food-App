@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { adminGuard } from '../core/gurds/admin.guard';
 import { userGuard } from '../core/gurds/user.guard';
-import { NoDataComponent } from './components/no-data/no-data.component';
+import { NoDataComponent } from '../shared/components/no-data/no-data.component';
 
 
 const routes: Routes = [

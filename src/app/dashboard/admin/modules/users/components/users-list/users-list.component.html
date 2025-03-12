@@ -1,1 +1,140 @@
-<p>users-list works!</p>
+<section class="">
+
+  <div class="page-title ">
+    <div class="row align-items-center justify-content-between p-2">
+      <div class="col-8 px-3">
+        <h3>Users<span> List</span></h3>
+        <p>You can now add your items that any user can order it from the Application and you can edit</p>
+      </div>
+      <div class="col-4 text-end">
+        <img src="../../../../../../../assets/img/eating-avatar.svg" alt="cc" class="col-5">
+      </div>
+    </div>
+  </div>
+
+  <div class=" page-content  p-4">
+    <div class="row align-items-center justify-content-between  ">
+      <div class="col-8 ">
+        <p class="p-0 m-0">Users Table Details</p>
+        <span class="px-2">You can check all details</span>
+      </div>
+      <!-- <div class="col-4 text-end">
+         <button class=" primary-color" routerLink="addRecipe">Add New Recipe</button>
+         </div> -->
+    </div>
+  </div>
+
+   <div class="search-area">
+    <div class="d-flex align-items-center justify-content-around ">
+
+     <mat-form-field  class="col-5  p-1">
+      <mat-label>Search By UserName..</mat-label>
+      <input matInput
+      name="search" type="text" value=""
+      (keydown.enter)="onGettingAllLoggedInUsers()"
+      [(ngModel)]="searchName" >
+     </mat-form-field>
+
+     <!-- <mat-form-field  class="col-3  p-1">
+      <mat-label>Write 1 for group admin, 2 for system user</mat-label>
+      <input matInput
+      name="role" type="text" value=""
+      (keydown.enter)="onGettingAllLoggedInUsers()"
+      [(ngModel)]="groupId" >
+     </mat-form-field> -->
+
+
+      <!-- <mat-form-field  class="col-2 ">
+        <mat-select  [(ngModel)]="groupId" (selectionChange)="onGettingAllLoggedInUsers()"  placeholder="Group">
+          <mat-option *ngFor="let role of groupId" [value]="groupId">
+            {{groupId}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+
+      <button class=" primary-color p-2 mb-4 ms-2" (click)="clearFilters()">Clear Filter </button>
+
+    </div>
+  </div>
+
+
+  <div  *ngIf="showNoData" >
+     <app-no-data></app-no-data>
+  </div>
+
+  <table *ngIf="!showNoData"  class=" w-100 table table-striped text-center ">
+    <thead class=" ">
+      <th>UserName</th>
+      <th>Email</th>
+      <th>phoneNumber</th>
+      <th>Image</th>
+      <th>Country</th>
+      <th>UserRole</th>
+      <th>creationDate</th>
+      <th>modificationDate</th>
+      <!-- <th>Actions</th> -->
+    </thead>
+    <tbody>
+      <tr  *ngFor="let user of allLOggedInUser" >
+        <td>{{ user.userName}}</td>
+        <td>{{ user.email}}</td>
+        <td>{{ user.phoneNumber}}</td>
+
+        <td class=" px-0 mx-0" >
+           <img *ngIf="user.imagePath"  [src]="baseUrl+user.imagePath"
+            alt="xx" class="col-2  px-0 mx-0">
+         </td>
+        <td>{{user.country}}</td>
+        <td>{{user.group.name }}</td>
+        <td>{{user.creationDate | date :'dd-mm-yy  hh:mm a' }}</td>
+        <td>{{user.modificationDate | date :'dd-mm-yy  hh:mm a' }}</td>
+
+        <!-- <td>
+         <ng-container *ngFor="let category of recipe.category">
+          {{category.name}}
+         </ng-container>
+        </td> -->
+
+        <!-- <td>
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu"  >
+
+            <button mat-menu-item  [routerLink]="['view-edit/' , recipe.id , true]">
+              <mat-icon>visibility</mat-icon>
+              <span>View</span>
+            </button>
+
+            <button mat-menu-item
+             [routerLink]="['view-edit/' , recipe.id]" >
+              <mat-icon >edit_square</mat-icon>
+              <span>Edit </span>
+            </button>
+
+            <button mat-menu-item  (click)="onOpenDeleteDialog(recipe.id)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+
+        </td> -->
+      </tr>
+    </tbody>
+
+  </table>
+
+
+
+  <mat-paginator *ngIf="!showNoData"  (page)="handelPageEvent($event)"
+                [length]="length"
+                [pageSize]="UsersPagesDetails.pageSize"
+                [pageSizeOptions]="[5,7,10 ,12]"
+                [pageIndex]="UsersPagesDetails.pageNumber-1"
+                aria-label="Select page">
+  </mat-paginator>
+
+
+
+  </section>

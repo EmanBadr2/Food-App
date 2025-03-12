@@ -7,7 +7,7 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { Router , ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteItemComponent } from 'src/app/dashboard/components/delete-item/delete-item.component';
-import { NoDataComponent } from 'src/app/dashboard/components/no-data/no-data.component';
+import { NoDataComponent } from 'src/app/shared/components/no-data/no-data.component';
 
 
 
@@ -58,7 +58,6 @@ export class ListRecipesComponent implements OnInit {
           this.showNoData=true
           console.log( 'Create component for empty Data');
         }
-
          console.log(res);
             this.recipesList= res.data
             this.recipesDetails.pageSize=res.pageSize
@@ -68,6 +67,7 @@ export class ListRecipesComponent implements OnInit {
       error :()=>{ } ,
       complete :()=>{ } ,
     })
+
     if(this.recipesList.length>0){
       this.showNoData=false
     }

@@ -69,6 +69,7 @@
           <!-- upload photo -->
           <ngx-dropzone (change)="onSelect($event)"  [disabled]="isViewMode">
             <ngx-dropzone-label>
+              <!-- <img *ngIf=" isViewMode" [src]="baseUrl+recipeForm.imagePath" alt="kk"> -->
               Drop Photo
               <i class=" fa-solid  fa-cloud-upload"></i>
             </ngx-dropzone-label >

@@ -6,13 +6,29 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersListComponent } from './components/users-list/users-list.component';
 
 
+
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/material/material.module';
+
+import { DashboardModule } from 'src/app/dashboard/dashboard.module';
+
+
+
+
 @NgModule({
   declarations: [
     UsersListComponent
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule  ,
+
+
+    SharedModule ,
+    MaterialModule ,
+
+    DashboardModule
+
   ]
 })
 export class UsersModule { }
