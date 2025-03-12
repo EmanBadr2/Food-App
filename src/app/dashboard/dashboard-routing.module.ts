@@ -5,12 +5,16 @@ import { HomeComponent } from './components/home/home.component';
 
 import { adminGuard } from '../core/gurds/admin.guard';
 import { userGuard } from '../core/gurds/user.guard';
+import { NoDataComponent } from './components/no-data/no-data.component';
+
 
 const routes: Routes = [
   { path: '', component: DashboardComponent ,
-    
+
    children:[
       { path: '', component: HomeComponent } ,
+      { path: 'no-data', component: NoDataComponent } ,
+
 
       { path: 'admin',
       canActivate:[adminGuard] ,

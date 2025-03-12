@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
-import {ICategory, ICategoriesData, getCategoryParams  , DialogData} from './../../models/categories';
+import {ICategory, ICategoriesData, getCategoryParams } from './../../models/categories';
 
 import { AddCategoryComponent } from '../add-category/add-category.component';
 import { DeleteItemComponent } from 'src/app/dashboard/components/delete-item/delete-item.component';
 
-import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
+import { MatDialog } from '@angular/material/dialog';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
 
@@ -19,12 +19,11 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 export class ListCategoriesComponent {
   constructor(private _CategoriesService:CategoriesService , public dialog: MatDialog
     , private _ToastrService:ToastrService ){
-    this.onGetCategoriesData()
+      this.onGetCategoriesData()
   }
 
   tableParams :getCategoryParams = { pageSize : 4 , pageNumber: 1} ;
   categoriesList!:ICategoriesData[];
-
   length !: number ;
 
   onGetCategoriesData(){
@@ -74,9 +73,7 @@ export class ListCategoriesComponent {
           newCategoryName = result
          this.onEditCategory(categoryId , newCategoryName)
       }
-
     })
-
 
   }
 
@@ -105,10 +102,9 @@ export class ListCategoriesComponent {
 
   onOpenDeleteDialog(category:ICategoriesData){
     const dialogRef =  this.dialog.open(DeleteItemComponent, {data:{name:category.name , id:category.id }})
-
     dialogRef.afterClosed().subscribe(result =>{
       console.log(result);
-      if(result ){
+      if(result){
         this.onDeleteCategory(category.id)
       }
     })
@@ -125,17 +121,16 @@ export class ListCategoriesComponent {
      complete :()=>{ } ,
     })
   }
+
 // ---------------------
 
  handelPageEvent(event:PageEvent){
-
   this.tableParams = {
     pageNumber: event.pageIndex+1 ,
     pageSize : event.pageSize
   }
   this.length = event.length
   this.onGetCategoriesData()
-
   }
 
 }

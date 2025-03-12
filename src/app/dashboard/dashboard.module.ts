@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharedModule } from "../shared/shared.module";
 import { DeleteItemComponent } from './components/delete-item/delete-item.component';
 import { MaterialModule } from '../material/material.module';
+import { NoDataComponent } from './components/no-data/no-data.component';
 
 
 @NgModule({
@@ -18,16 +19,20 @@ import { MaterialModule } from '../material/material.module';
     HomeComponent ,
     SidebarComponent ,
      NavbarComponent,
-     DeleteItemComponent
+     DeleteItemComponent,
+     NoDataComponent
 
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule ,
-    
     MaterialModule
 ] ,
+exports :[
+  NoDataComponent
+
+]
 
 })
 export class DashboardModule { }

@@ -20,8 +20,4 @@ export interface getCategoryParams {
   pageNumber: number ,
 }
 
-// ----
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+

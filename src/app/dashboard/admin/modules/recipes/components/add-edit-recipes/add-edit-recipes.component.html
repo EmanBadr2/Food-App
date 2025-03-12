@@ -1,0 +1,100 @@
+
+<section>
+  <div class="contaniner py-3">
+
+    <div class="text-content d-flex align-items-center justify-content-between p-3 mb-4 mx-5  ">
+      <div class="col-md-8">
+        <h6>Fill The <span class="text-success"> Recipe</span> !</h6>
+        <p>you can now fill the meals easily using the table and form , click here and sill it with the table !</p>
+      </div>
+      <button class=" primary-color "  routerLink="/dashboard/admin/recipes">
+        All Recipes
+       <i class="fa fa-arrow-right ms-2" ></i>
+      </button>
+    </div>
+
+   <h4 class=" text-muted fw-light"> {{ isEditMode ?'Edit' : isViewMode?'View' : 'Add' }} Recipe </h4>
+
+    <div class="row ">
+      <div class="col-md-10 mx-auto ">
+        <form (ngSubmit)="onSubmitRecipeForm(recipeForm)" [formGroup]="recipeForm"  >
+
+          <mat-form-field class="w-100">
+            <mat-label> Recipe Name </mat-label>
+            <input
+            type="text"
+            matInput
+            placeholder="Enter Recipe Name.."
+            formControlName="name"
+            />
+          </mat-form-field>
+
+
+      <mat-form-field   class="w-100">
+        <mat-select    placeholder="Tag"  formControlName="tagId">
+          <mat-option *ngFor="let tag of tagList" [value]="tag.id">
+            {{tag.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+          <mat-form-field  class="w-100">
+            <mat-label> price </mat-label>
+            <input  class="w-100"
+            type="number"
+            matInput
+            placeholder="Enter Recipe price.."
+            formControlName="price"
+            />
+          </mat-form-field>
+
+
+      <mat-form-field   class="w-100">
+        <mat-select placeholder="Category"  formControlName="categoriesIds" multiple >
+          <mat-option *ngFor="let category of categoriesList" [value]="category.id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+          <mat-form-field  class="w-100">
+            <mat-label> Description </mat-label>
+            <textarea class="w-100" matInput
+            placeholder="Enter Recipe description.."
+            formControlName="description" ></textarea>
+
+          </mat-form-field>
+
+
+          <!-- upload photo -->
+          <ngx-dropzone (change)="onSelect($event)"  [disabled]="isViewMode">
+            <ngx-dropzone-label>
+              Drop Photo
+              <i class=" fa-solid  fa-cloud-upload"></i>
+            </ngx-dropzone-label >
+            <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+              *ngFor="let f of files" [file]="f"
+              [removable]="true" (removed)="onRemove(f)">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+
+
+          <div class="me-auto text-end p-2 ">
+
+            <button class="mx-2 btn-outline-success"
+            type="button" routerLink='/dashboard/admin/recipes'>
+            Cancel  </button>
+
+            <button *ngIf="!isViewMode"
+             class="mx-2 primary-color" type="submit"> {{ isEditMode? 'Update' :'Save'  }}  </button>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>

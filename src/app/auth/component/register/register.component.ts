@@ -56,6 +56,7 @@ rePassWordMatch(myForm:AbstractControl): null| { [key:string ] : string }{
 // Handel Register
   sendData(registerForm:FormGroup){
     console.log( 'As Reactive Form ', registerForm);
+
     let  objectToFormData = registerForm.value
     const formData = new FormData();
     for (const key in objectToFormData) {
@@ -64,6 +65,7 @@ rePassWordMatch(myForm:AbstractControl): null| { [key:string ] : string }{
     // OR
     // Object.entries(objectToFormData).forEach(([key, value]) => { formData.append(key, value) });
     console.log('As Form Data ',  formData )
+    
     this._AuthService.register(formData).subscribe({
       next :(res:any)=> {
          console.log(res);
