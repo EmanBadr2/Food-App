@@ -23,9 +23,8 @@ export class UsersListComponent implements OnInit  {
   length !: number ;
   UsersPagesDetails : any = { pageSize:10 , pageNumber:1  }
    searchName: string = '' ;
-
-   groupId:number = 1;
-
+   usersRole :any=[ { role:'Admin' , groupID:1} , { role:'User'  ,groupID:2}]
+   groupId:number|undefined ;
 
     constructor(private _UsersService:UsersService , private _HelperService:HelperService ,
      private _ToastrService:ToastrService , public dialog: MatDialog ,
@@ -37,20 +36,28 @@ export class UsersListComponent implements OnInit  {
 
   }
   onGettingAllLoggedInUsers( ):void{
-    const allUserParams = {
+     let allUserParams = {
       pageSize: this.UsersPagesDetails.pageSize ,       //required
       pageNumber: this.UsersPagesDetails.pageNumber ,    //required
       userName: this.searchName ,
-      // email:'' ,
-      // country:'' ,
-      // groups:this.groupId
+      groups:this.groupId ,
     }
+
+    function removeUndefinedProperties(allUserParams: any): any {
+      for (const key in allUserParams) {
+        if (allUserParams[key] === undefined) {
+          delete allUserParams[key];
+        }
+      }
+      return allUserParams;
+    }
+    allUserParams = removeUndefinedProperties(allUserParams)
 
     this._UsersService.onGettingAllLoggedInUsers(allUserParams).subscribe({
       next:(res)=>{
-        console.log(res);
-
+        // console.log(res);
         this.allLOggedInUser= res.data
+        this.length= res.totalNumberOfRecords
         allUserParams.pageNumber = res.pageNumber
         allUserParams.pageSize = res.pageSize
 
@@ -69,7 +76,7 @@ export class UsersListComponent implements OnInit  {
 
   clearFilters():void{
     this.searchName = ''
-    this.groupId= 0
+    this.groupId= undefined
     this.showNoData = false
     this.onGettingAllLoggedInUsers()
   }
@@ -77,7 +84,6 @@ export class UsersListComponent implements OnInit  {
 // ---------------------
 // paginator
  handelPageEvent(event:PageEvent){
-  console.log(event);
   this.UsersPagesDetails = {
      pageNumber: event.pageIndex+1 ,
      pageSize: event.pageSize

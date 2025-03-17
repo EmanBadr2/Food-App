@@ -8,10 +8,14 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NoDataComponent } from './components/no-data/no-data.component';
+
+
 
 
 @NgModule({
   declarations: [
+    NoDataComponent
 
   ],
   imports: [
@@ -38,6 +42,9 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     ReactiveFormsModule,
 
     NgxDropzoneModule ,
+
+
+
 
   ],
 

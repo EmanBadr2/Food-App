@@ -1,0 +1,95 @@
+<section>
+
+  <div class="page-title p-2">
+    <div class="row align-items-center justify-content-between p-2">
+      <div class="col-8 px-3">
+        <h3>Favorite <span> item</span></h3>
+        <p>You can now add your items that any user can order it from the Application and you can edit</p>
+      </div>
+      <div class="col-4 text-end">
+        <img src="../../../../assets/img/eating-avatar.svg" alt="cc" class="col-5">
+      </div>
+    </div>
+  </div>
+
+
+   <div class="search-area m-2">
+    <div class="d-flex align-items-center justify-content-between ">
+
+     <mat-form-field  class="col-6  p-1">
+      <mat-label>Search By Recipe Name..</mat-label>
+      <input matInput
+      name="search" type="text" value=""
+      (keydown.enter)="onGettingAllFav()"
+      [(ngModel)]="searchName"
+      placeholder="Ex: pizza"
+      >
+     </mat-form-field>
+
+      <mat-form-field  class="col-2 ">
+        <mat-select  [(ngModel)]="tagId" (selectionChange)="onGettingAllFav()"  placeholder="Type">
+          <mat-option *ngFor="let tag of tagList" [value]="tag.id">
+            {{tag.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field  class="col-2 ">
+        <mat-select placeholder="Category" [(ngModel)]="categoryId" (selectionChange)="onGettingAllFav()" >
+          <mat-option *ngFor="let category of categoriesList" [value]="category.id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button class=" primary-color p-2 mb-4 ms-2" (click)="clearFilters()">Clear Filter </button>
+
+    </div>
+  </div>
+
+
+  <div class="row  px-5  ">
+    <div class="col-md-6 col-lg-4  " *ngFor="let fav of favList">
+      <div class="item m-2 shadow rounded bg-white" >
+        <!-- img && icon -->
+        <div class="p-0 m-0 position-relative">
+        <img
+         [src]="fav.recipe.imagePath?'baseUrl+fav.recipe.imagePath' : '../../../../assets/img/notfoundFood.jpeg' "
+         class="w-100 rounded" alt="xx" >
+         <div class="position-absolute top-0 end-0 p-3 ">
+          <span class="bg-white p-1 rounded border"><i class=" fa-solid fa-heart "></i> </span>
+        </div>
+        </div>
+        <!-- name&& price -->
+        <div class="d-flex align-items-center justify-content-between mt-2 mx-3">
+          <h5>{{fav.recipe.name}}</h5>
+          <span >{{fav.recipe.price}} <span>EG</span></span>
+        </div>
+        <!-- tag && desc && delete -->
+        <div class=" d-flex align-items-center justify-content-between mx-3 mb-2">
+          <div class="fav-details">
+              <h6 class="pb-0 mb-0"> {{fav.recipe.tag.name}} </h6>
+              <h6 class="">{{fav.recipe.description}}</h6>
+          </div>
+          <div class=" "  (click)="onDeleteFav(fav.id)">
+            <i class="fa-solid fa-trash-can text-danger"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!--
+  <mat-paginator  (page)="handelPageEvent($event)"
+                [length]="length"
+                [pageSize]="favDetails.pageSize"
+                [pageSizeOptions]="[3,5,7,10 ,12]"
+                [pageIndex]="favDetails.pageNumber"
+                aria-label="Select page">
+   </mat-paginator> -->
+
+
+
+</section>

@@ -11,13 +11,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/material/material.module';
 
 import { DashboardModule } from 'src/app/dashboard/dashboard.module';
+import { AddEditUsersComponent } from './components/add-edit-users/add-edit-users.component';
 
 
 
 
 @NgModule({
   declarations: [
-    UsersListComponent
+    UsersListComponent,
+    AddEditUsersComponent
   ],
   imports: [
     CommonModule,

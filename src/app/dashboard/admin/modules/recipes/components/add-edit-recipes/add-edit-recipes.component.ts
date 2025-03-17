@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RecipesService } from '../../services/recipes.service';
 import { FormControl, FormGroup } from '@angular/forms';
+
 import { HelperService } from 'src/app/shared/services/helper.service';
 import { ToastrService } from 'ngx-toastr';
 import { formatDate } from '@angular/common';
@@ -46,7 +47,6 @@ export class AddEditRecipesComponent implements OnInit  {
      // pass Data to Form (View & Edit)
     if(this.activeRecipeID){
       this.onGettingRecipeById(this.activeRecipeID)
-      console.log(this.recipeForm);
     }
     // View Mode
     if( this.isFormDisabled == 'true' ){ this.isViewMode= true }
@@ -59,11 +59,13 @@ export class AddEditRecipesComponent implements OnInit  {
 
  //----------------
   onSubmitRecipeForm(form:any){
+
     let formValues = form.value
     const myFormData = new FormData();
     for(const key in formValues){
       if (formValues.hasOwnProperty(key)) {  myFormData.append(key, formValues[key]) }
     }
+
     if(this.files.length>0){
      myFormData.append('recipeImage' , this.files[0])
     }
@@ -79,7 +81,6 @@ export class AddEditRecipesComponent implements OnInit  {
   onGettingRecipeById(id:null |number){
     this._RecipesService.onGettingRecipeById(id).subscribe({
       next:(res)=>{
-        console.log(res);
         // let imgPath = res.imagePath
         // let mainImgPath:string = 'https://upskilling-egypt.com:3006/'+imgPath
         // console.log(mainImgPath);
@@ -93,7 +94,7 @@ export class AddEditRecipesComponent implements OnInit  {
            recipeImage : res.imagePath
           }
         );
-    
+
       } ,
       error:(err)=>{
         console.log(err);
@@ -153,8 +154,6 @@ export class AddEditRecipesComponent implements OnInit  {
     })
 
   }
-
-
 
 
 

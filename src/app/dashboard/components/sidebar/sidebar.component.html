@@ -1,13 +1,37 @@
-<section class="pt-2 ">
-  <img src="../../../assets/img/logosidear.png" alt="xx" class="w75">
+<section class="pt-2 "   [class.fa-2x]="isHideText" [class.text-center]="isHideText"   >
+  <div (click)="onHide()" class="logo p-0 m-0 " >
+  <img src="../../../assets/img/logosidear.png" alt="xx" class="w-75">
+  </div>
+
   <ul>
-    <li class="mb-2"  *ngFor="let item of menu">
+    <li class="mb-2 "  *ngFor="let item of menu">
      <ng-container *ngIf="item.isActive ">
       <a [routerLink]="item.menuLink"  routerLinkActive="" >
-        <span class="p-1">  <i class=" fa-solid " [class]="item.icon"></i> </span>
-         <span class="p-1" > {{item.title}}</span>
+        <span class="p-1 ">  <i class=" fa-solid " [class]="item.icon" ></i> </span>
+         <span class="p-1 " *ngIf="!isHideText" > {{item.title}}</span>
       </a>
     </ng-container>
     </li>
   </ul>
+
+
+  <li >
+    <ng-container  *ngIf="isAdmin()">
+      <a  routerLinkActive="" (click)="onOpenChangePasswordDialog()" >
+        <span class="p-1 ">  <i class=" fa-solid fa-unlock-keyhole"  ></i> </span>
+         <span class="p-1 " *ngIf="!isHideText" > Change Password</span>
+      </a>
+    </ng-container>
+  </li>
+
+
+  <li>
+    <ng-container *ngIf="isAdmin()">
+      <a  routerLinkActive=""  routerLink="/auth" >
+        <span class="p-1 ">  <i class=" fa-solid fa-right-from-bracket"  ></i> </span>
+         <span class="p-1 " *ngIf="!isHideText" > LogOut</span>
+      </a>
+    </ng-container>
+  </li>
+
 </section>

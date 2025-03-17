@@ -5,7 +5,11 @@ import { HomeComponent } from './components/home/home.component';
 
 import { adminGuard } from '../core/gurds/admin.guard';
 import { userGuard } from '../core/gurds/user.guard';
+
 import { NoDataComponent } from '../shared/components/no-data/no-data.component';
+
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 const routes: Routes = [
@@ -14,7 +18,8 @@ const routes: Routes = [
    children:[
       { path: '', component: HomeComponent } ,
       { path: 'no-data', component: NoDataComponent } ,
-
+      { path: 'profile', component: ProfileComponent } ,
+      { path: 'home', component: HomeComponent } ,
 
       { path: 'admin',
       canActivate:[adminGuard] ,
@@ -26,6 +31,7 @@ const routes: Routes = [
       loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       }
     ] },
+
 
 
 ];

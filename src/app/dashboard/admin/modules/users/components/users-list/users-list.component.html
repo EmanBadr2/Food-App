@@ -44,13 +44,13 @@
      </mat-form-field> -->
 
 
-      <!-- <mat-form-field  class="col-2 ">
+      <mat-form-field  class="col-2 ">
         <mat-select  [(ngModel)]="groupId" (selectionChange)="onGettingAllLoggedInUsers()"  placeholder="Group">
-          <mat-option *ngFor="let role of groupId" [value]="groupId">
-            {{groupId}}
+          <mat-option *ngFor="let user of usersRole" [value]="user.groupID">
+            {{user.role}}
           </mat-option>
         </mat-select>
-      </mat-form-field> -->
+      </mat-form-field>
 
 
       <button class=" primary-color p-2 mb-4 ms-2" (click)="clearFilters()">Clear Filter </button>
@@ -59,9 +59,9 @@
   </div>
 
 
-  <div  *ngIf="showNoData" >
+  <!-- <div  *ngIf="showNoData" >
      <app-no-data></app-no-data>
-  </div>
+  </div> -->
 
   <table *ngIf="!showNoData"  class=" w-100 table table-striped text-center ">
     <thead class=" ">
@@ -71,9 +71,9 @@
       <th>Image</th>
       <th>Country</th>
       <th>UserRole</th>
-      <th>creationDate</th>
-      <th>modificationDate</th>
-      <!-- <th>Actions</th> -->
+      <!-- <th>creationDate</th> -->
+      <!-- <th>modificationDate</th> -->
+      <th>Actions</th>
     </thead>
     <tbody>
       <tr  *ngFor="let user of allLOggedInUser" >
@@ -87,8 +87,8 @@
          </td>
         <td>{{user.country}}</td>
         <td>{{user.group.name }}</td>
-        <td>{{user.creationDate | date :'dd-mm-yy  hh:mm a' }}</td>
-        <td>{{user.modificationDate | date :'dd-mm-yy  hh:mm a' }}</td>
+        <!-- <td>{{user.creationDate | date :'dd-mm-yy  hh:mm a' }}</td> -->
+        <!-- <td>{{user.modificationDate | date :'dd-mm-yy  hh:mm a' }}</td> -->
 
         <!-- <td>
          <ng-container *ngFor="let category of recipe.category">
@@ -96,30 +96,24 @@
          </ng-container>
         </td> -->
 
-        <!-- <td>
+        <td>
           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu"  >
-
-            <button mat-menu-item  [routerLink]="['view-edit/' , recipe.id , true]">
+<!-- [routerLink]="['view-edit/' , recipe.id , true]" -->
+            <button mat-menu-item  >
               <mat-icon>visibility</mat-icon>
               <span>View</span>
             </button>
-
+    <!-- [routerLink]="['view-edit/' , recipe.id]" -->
             <button mat-menu-item
-             [routerLink]="['view-edit/' , recipe.id]" >
+          >
               <mat-icon >edit_square</mat-icon>
               <span>Edit </span>
             </button>
-
-            <button mat-menu-item  (click)="onOpenDeleteDialog(recipe.id)">
-              <mat-icon>delete</mat-icon>
-              <span>Delete</span>
-            </button>
           </mat-menu>
-
-        </td> -->
+        </td>
       </tr>
     </tbody>
 
@@ -127,7 +121,7 @@
 
 
 
-  <mat-paginator *ngIf="!showNoData"  (page)="handelPageEvent($event)"
+  <mat-paginator *ngIf="!showNoData" (page)="handelPageEvent($event)"
                 [length]="length"
                 [pageSize]="UsersPagesDetails.pageSize"
                 [pageSizeOptions]="[5,7,10 ,12]"

@@ -1,0 +1,75 @@
+<section>
+  <div class="container p-5">
+
+    <div class="row  px-5 ">
+
+      <div class="col-md-6 align-items-center  pt-5 ">
+           <!-- baseUrl+recipe.imagePath -->
+            <div class="  text-center">
+              <img  src="../../../../assets/img/Ellipse34.svg" alt="xx" class="col-2   px-0 mx-0"  >
+
+              <p class=" text-muted fw-bold mt-2"> {{userForm.get('group')?.get('name')?.value}}</p>
+            </div>
+
+       <div class=""   *ngIf="isEditMode" >
+         <p class=" primary-color ">Please.. Enter your password to be able to Update your data..  </p>
+       </div>
+
+       </div>
+
+    <div class="col-md-6  row">
+         <form action="" [formGroup]="userForm" >
+
+          <div class=" pb-3" >
+           <label for="">User Name :</label>
+           <input   formControlName="userName" class="form-control rounded-pill "   type="text"   >
+          </div>
+
+         <div  class=" pb-3" >
+           <label for="">User Email:</label>
+           <input   formControlName="email" class="form-control rounded-pill "   type="text"   >
+         </div>
+
+         <div class=" pb-3" >
+            <label for="">User Country :</label>
+            <input   formControlName="country" class="form-control rounded-pill "   type="text"  >
+         </div>
+
+         <div class=" pb-3" >
+           <label for="">phoneNumber :</label>
+           <input   formControlName="phoneNumber" class="form-control rounded-pill "  type="text"  >
+         </div>
+
+
+         <div *ngIf="isEditMode" class=" pb-3" >
+          <label for=""> confirmPassword:</label>
+          <input   formControlName="confirmPassword" placeholder="Enter your password.."
+           class="form-control rounded-pill "type="password"  >
+          </div>
+
+         <div class=" pb-3" *ngIf="!isEditMode" >
+          <label for="">creationDate :</label>
+          <span class="px-1">{{userForm.get('creationDate')?.value | date :'dd-mm-yy  hh:mm a' }}</span>
+         </div>
+
+         <div class=" pb-3" *ngIf="!isEditMode"  >
+           <label for="">modificationDate  :</label>
+           <span class="px-1">{{userForm.get('modificationDate')?.value | date :'dd-mm-yy  hh:mm a'  }}</span>
+         </div>
+
+         <div class="my-5 text-end px-2">
+           <!-- {{isEditMode? 'Update' :'Edit'}}  -->
+          <button class=" primary-color "  *ngIf="!isEditMode"  (click)="onEdit(userForm)" > Edit</button>
+          <button class=" primary-color " *ngIf="isEditMode" (click)="onUpdatingCurrentUser(userForm)" >  Update </button>
+
+          </div>
+
+       </form>
+    </div>
+
+
+    </div>
+
+  </div>
+
+</section>

@@ -76,7 +76,6 @@ export class ListCategoriesComponent {
     })
 
   }
-
   onEditCategory(categoryId:number| undefined , updateCategoryName:object | undefined){
 
     this._CategoriesService.onUpdateCategory(categoryId , updateCategoryName ).subscribe({

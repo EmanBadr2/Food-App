@@ -1,7 +1,11 @@
 <!--   main layout --- navbar/sidebar/ admin or user -->
 <section  class="vh-100 w-100  ">
   <div class="row m-0 ">
-  <div class="col-2  p-0"> <app-sidebar></app-sidebar>    </div>
+    <!-- [class]="receivedData.isHide? 'col-1' :'col-2'" -->
+  <div class="col-2  p-0"  >
+     <app-sidebar (dataToParent)="handleDataFromChild($event)"></app-sidebar>
+
+   </div>
   <div class="col-9 ms-2 mt-2 ">
     <div class="">
        <app-navbar></app-navbar>

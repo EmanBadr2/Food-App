@@ -16,11 +16,31 @@
 
     <div class="col-3 text-end">
       <div class="end-side  d-flex align-items-center justify-content-around">
-      <div>
+      <div  >
+        <a routerLink="profile" >
          <img src="../../../../assets/img/Ellipse34.svg" class="col-3" alt="">
-      <span class="px-2 ">UpSkilling</span>
+         <span class="px-2 ">UpSkilling</span>
+        </a>
       </div>
-      <i class="fa-solid fa-caret-down"></i>
+      <div class="dropDowm-Profile">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu"  >
+
+          <button mat-menu-item routerLink="profile" >
+            <mat-icon>visibility</mat-icon>
+            <span>View My Profile</span>
+          </button>
+
+  <!-- [routerLink]="['view-edit/' , recipe.id]" -->
+          <button mat-menu-item  >
+            <mat-icon >edit_square</mat-icon>
+            <span>Edit </span>
+          </button>
+
+        </mat-menu>
+      </div>
       <i class="fa-solid fa-bell"></i>
       </div>
 

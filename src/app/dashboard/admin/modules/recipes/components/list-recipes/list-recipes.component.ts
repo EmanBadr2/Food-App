@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+
 import { RecipesService } from '../../services/recipes.service';
-import { ToastrService } from 'ngx-toastr';
 import { HelperService } from 'src/app/shared/services/helper.service';
-import { IRecipesData  , ICategoriesAndTags} from '../../models/recipes'
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+
+import { ToastrService } from 'ngx-toastr';
 import { Router , ActivatedRoute } from '@angular/router';
+
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+
+import { IRecipesData  , ICategoriesAndTags} from '../../models/recipes'
 import { DeleteItemComponent } from 'src/app/dashboard/components/delete-item/delete-item.component';
 import { NoDataComponent } from 'src/app/shared/components/no-data/no-data.component';
+
 
 
 
@@ -60,6 +65,7 @@ export class ListRecipesComponent implements OnInit {
         }
          console.log(res);
             this.recipesList= res.data
+           this.length= res.totalNumberOfRecords
             this.recipesDetails.pageSize=res.pageSize
             this.recipesDetails.pageNumber=res.pageNumber
 
@@ -132,7 +138,6 @@ export class ListRecipesComponent implements OnInit {
 // ---------------------
 // paginator
  handelPageEvent(event:PageEvent){
-  console.log(event);
   this.recipesDetails = {
      pageNumber: event.pageIndex+1 ,
      pageSize: event.pageSize

@@ -43,14 +43,13 @@ import { MaterialModule } from './material/material.module';
     }) ,
 
     NgxFileDropModule ,
-    
+
     MaterialModule
 
 
 
-
-
   ],
+  
   providers: [
     // interceptor
       {
@@ -59,6 +58,7 @@ import { MaterialModule } from './material/material.module';
           multi:true
         },
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
