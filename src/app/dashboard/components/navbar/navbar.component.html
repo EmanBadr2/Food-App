@@ -18,8 +18,10 @@
       <div class="end-side  d-flex align-items-center justify-content-around">
       <div  >
         <a routerLink="profile" >
-         <img src="../../../../assets/img/Ellipse34.svg" class="col-3" alt="">
-         <span class="px-2 ">UpSkilling</span>
+         <img *ngIf="!imagePath" src="../../../../assets/img/Ellipse34.svg" class="col-3" alt="xx">
+         <img *ngIf="imagePath"  [src]="baseUrl+imagePath" class="col-3" alt="notFound">
+
+         <span class="px-2 ">{{userName}}</span>
         </a>
       </div>
       <div class="dropDowm-Profile">

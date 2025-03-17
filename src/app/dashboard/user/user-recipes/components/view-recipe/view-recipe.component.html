@@ -1,0 +1,30 @@
+
+  <div class=" row py-2  m-auto">
+    <div class="w-100">
+
+
+    <div class=" d-flex align-items-center justify-content-between ">
+      <h5>Recipe Details</h5>
+       <i class="fa-solid fa-close text-danger  p-1 border rounded-circle border-danger" mat-dialog-close=""></i>
+    </div>
+
+    <div class=" text-center">
+      <img *ngIf="mydata.imagePath"
+      [src]="baseUrl+mydata.imagePath"
+      class="w-50 rounded" alt="xx" >
+
+      <img *ngIf="!mydata.imagePath"
+       src="../../../../assets/img/notfoundFood.jpeg"
+      class="w-50 rounded" alt="xx" >
+    </div>
+
+    <div>
+      <h5> Name : {{mydata.name}}</h5>
+       <span > Price : {{mydata.price}} <span>EG</span></span>
+      <h6 class="pb-0 mb-0">Type: {{mydata.tag.name}} </h6>
+       <h6 class="">{{mydata.description}}</h6>
+    </div>
+   </div>
+
+
+  </div>

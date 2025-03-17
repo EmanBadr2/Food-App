@@ -13,4 +13,5 @@ export class UsersService {
    onGettingAllLoggedInUsers(allUserParams:any ):Observable<IAllUsers> {
       return this._HttpClient.get<IAllUsers>( `Users` , {params : allUserParams } )
     }
+    
 }

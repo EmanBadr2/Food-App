@@ -53,9 +53,14 @@
       <div class="item m-2 shadow rounded bg-white" >
         <!-- img && icon -->
         <div class="p-0 m-0 position-relative">
-        <img
-         [src]="fav.recipe.imagePath?'baseUrl+fav.recipe.imagePath' : '../../../../assets/img/notfoundFood.jpeg' "
+        <img *ngIf="fav.recipe.imagePath"
+         [src]="baseUrl+fav.recipe.imagePath"
          class="w-100 rounded" alt="xx" >
+
+         <img *ngIf="!fav.recipe.imagePath"
+          src="../../../../assets/img/notfoundFood.jpeg"
+         class="w-100 rounded" alt="xx" >
+         
          <div class="position-absolute top-0 end-0 p-3 ">
           <span class="bg-white p-1 rounded border"><i class=" fa-solid fa-heart "></i> </span>
         </div>

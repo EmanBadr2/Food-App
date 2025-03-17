@@ -43,6 +43,7 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
     this.onGettingTags()
     this.onGettingAllCategories()
+
     this.onGettingAllFav()
    }
 

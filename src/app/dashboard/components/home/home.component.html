@@ -13,7 +13,8 @@
   </div>
 
 
-  <div class="text-content d-flex align-items-center justify-content-between p-3 mb-4 my-3">
+  <div  *ngIf="isAdmin"
+    class="text-content d-flex align-items-center justify-content-between p-3 mb-4 my-3">
     <div class="col-md-8">
       <h6>Fill The <span class="text-success"> Recipe</span> !</h6>
       <p>you can now fill the meals easily using the table and form , click here and sill it with the table !</p>

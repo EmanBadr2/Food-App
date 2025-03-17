@@ -81,7 +81,8 @@
           </button>
           <mat-menu #menu="matMenu"  >
 
-            <button mat-menu-item  [routerLink]="['view-edit/' , recipe.id , true]">
+            <!-- [routerLink]="['view-edit/' , recipe.id , true] "-->
+            <button mat-menu-item (click)="onOpenViewDialog(recipe)" >
               <mat-icon>visibility</mat-icon>
               <span>View</span>
             </button>

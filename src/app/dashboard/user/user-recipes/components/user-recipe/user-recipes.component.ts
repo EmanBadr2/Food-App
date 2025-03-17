@@ -9,8 +9,9 @@ import { Router , ActivatedRoute } from '@angular/router';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 
-import { IRecipesData  , ICategoriesAndTags} from '../../admin/modules/recipes/models/recipes'
-import { UserFavService } from '../services/user-fav.service';
+import { UserFavService } from '../../../services/user-fav.service';
+import { ViewRecipeComponent } from '../view-recipe/view-recipe.component';
+import { IRecipes   , ICategoriesAndTags , IRecipesData} from 'src/app/shared/interFaces/recipes';
 
 
 
@@ -26,7 +27,7 @@ export class UserRecipesComponent  implements OnInit{
 
     showNoData:boolean=false ;
 
-    baseUrl:string = 'https://upskilling-egypt.com:3006/';
+    baseUrl:string = `https://upskilling-egypt.com:3006/`;
     length !: number ;
     recipesList :IRecipesData[] =[] ;
     tagList : ICategoriesAndTags[] =[] ;
@@ -102,6 +103,20 @@ export class UserRecipesComponent  implements OnInit{
     })
    }
 
+
+   onOpenViewDialog(data : IRecipesData){
+    console.log(data);
+    const dialogRef = this.dialog.open(ViewRecipeComponent , {data :data} )
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(result);
+      if(result){
+        console.log(result);
+        //call
+
+      }
+
+    })
+   }
 
 
 

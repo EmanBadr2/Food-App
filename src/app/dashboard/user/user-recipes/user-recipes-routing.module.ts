@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserRecipesComponent } from './user-recipes.component';
+import { UserRecipesComponent } from './components/user-recipe/user-recipes.component';
 
 const routes: Routes = [{ path: '', component: UserRecipesComponent }];
 
