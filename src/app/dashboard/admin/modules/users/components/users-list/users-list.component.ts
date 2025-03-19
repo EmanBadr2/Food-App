@@ -5,9 +5,9 @@ import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { Router , ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteItemComponent } from 'src/app/dashboard/components/delete-item/delete-item.component';
-import { NoDataComponent } from 'src/app/shared/components/no-data/no-data.component';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../models/users';
+import { NoDataComponent } from 'src/app/dashboard/components/no-data/no-data.component';
 
 
 @Component({

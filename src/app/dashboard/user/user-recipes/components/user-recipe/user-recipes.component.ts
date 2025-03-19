@@ -12,8 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserFavService } from '../../../services/user-fav.service';
 import { ViewRecipeComponent } from '../view-recipe/view-recipe.component';
 import { IRecipes   , ICategoriesAndTags , IRecipesData} from 'src/app/shared/interFaces/recipes';
-
-
+import { NoDataComponent } from 'src/app/dashboard/components/no-data/no-data.component';
 
 
 

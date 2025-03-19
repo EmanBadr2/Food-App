@@ -5,8 +5,6 @@ import { UserRecipesRoutingModule } from './user-recipes-routing.module';
 import { UserRecipesComponent } from './components/user-recipe/user-recipes.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { NoDataComponent } from 'src/app/shared/components/no-data/no-data.component';
-
 import { ViewRecipeComponent } from './components/view-recipe/view-recipe.component';
 
 
@@ -22,6 +20,7 @@ import { ViewRecipeComponent } from './components/view-recipe/view-recipe.compon
     UserRecipesRoutingModule ,
     MaterialModule ,
     SharedModule ,
+
   ]
 })
 export class UserRecipesModule { }

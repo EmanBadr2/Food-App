@@ -2,11 +2,11 @@
 <section  class="vh-100 w-100  ">
   <div class="row m-0 ">
     <!-- [class]="receivedData.isHide? 'col-1' :'col-2'" -->
-  <div class="col-2  p-0"  >
-     <app-sidebar (dataToParent)="handleDataFromChild($event)"></app-sidebar>
+  <div class="  p-0" [class]="!isSidebarClick?'col-2' :'col-1'" >
+     <app-sidebar (booleanChange)="onBooleanChange($event)" ></app-sidebar>
 
    </div>
-  <div class="col-9 ms-2 mt-2 ">
+  <div class=" ms-2 mt-2 "   [class]="!isSidebarClick?'col-9' :'col-10'">
     <div class="">
        <app-navbar></app-navbar>
        <!-- Admin || User  -->

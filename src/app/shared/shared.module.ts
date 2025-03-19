@@ -8,17 +8,22 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { NoDataComponent } from './components/no-data/no-data.component';
+
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+// import { BrowserModule } from '@angular/platform-browser';
+
 
 
 
 
 @NgModule({
   declarations: [
-    NoDataComponent
+    NotFoundComponent
 
   ],
   imports: [
+
     CommonModule ,
     RouterModule ,
 
@@ -43,6 +48,10 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 
     NgxDropzoneModule ,
 
+
+    NotFoundComponent,
+    
+   
 
 
 

@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './service/auth.service';
+import { AuthService } from '../../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  constructor(private _AuthService:AuthService   ,private  _toastr: ToastrService  , private _Router:Router){}
+  constructor(private _AuthService:AuthService
+      ,private  _toastr: ToastrService  , private _Router:Router){}
 
   isHide:boolean =true
 

@@ -12,28 +12,24 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ChangePasswordComponent {
 
-
-    constructor(   @Inject(MAT_DIALOG_DATA) public data:any ,
-      public dialogRef: MatDialogRef<ChangePasswordComponent> ,
-    private _ToastrService:ToastrService , public dialog: MatDialog , private _ProfileService:ProfileService
-    ){ }
-
-
-
     isHide :boolean =false
-     changePasswordForm:FormGroup= new FormGroup({
+    changePasswordForm:FormGroup= new FormGroup({
         oldPassword: new FormControl(null),
         newPassword: new FormControl(null),
         confirmNewPassword: new FormControl(null),
       })
 
-      sendData(data:any){
-        console.log(  'call aoi');
-        this.onOpenChangePassword(data.value)
-      }
+    constructor(
+       @Inject(MAT_DIALOG_DATA) public data:any ,
+      public dialogRef: MatDialogRef<ChangePasswordComponent> ,
+
+    private _ToastrService:ToastrService , public dialog: MatDialog ,
+    private _ProfileService:ProfileService
+    ){ }
+
 
       onOpenChangePassword(data:any):void{
-        this._ProfileService.onChangeUserPassWord(data).subscribe({
+        this._ProfileService.onChangeUserPassWord(data.value).subscribe({
           next :(res)=>{
             console.log(res);
          } ,
@@ -49,7 +45,6 @@ export class ChangePasswordComponent {
 
    onCloseDialog():void{
       this.dialogRef.close();
-      console.log('Close');
      }
 
 }

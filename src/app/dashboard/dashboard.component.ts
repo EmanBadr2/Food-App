@@ -7,17 +7,17 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   constructor(){
+  }
 
+
+  isSidebarClick:boolean=false
+  onBooleanChange(value: boolean) {
+    this.isSidebarClick = value;
   }
 
 
 
 
-// Method to handle data from the child
-  receivedData: any;  // Variable to hold the received data from the child
-  handleDataFromChild(data: any) {
-    this.receivedData = data;  // Receive the object from the child component
-  }
 
 
 }

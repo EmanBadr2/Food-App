@@ -33,6 +33,20 @@ constructor(private _HttpClient:HttpClient ) {
     return this._HttpClient.post(`Users/Register` ,data )
   }
 
+  forgetPassword(data:any ):Observable<any>{
+    return this._HttpClient.post(`Users/Reset/Request` , data)
+  }
+
+  resetPassword(data:any ):Observable<any>{
+    return this._HttpClient.post(`Users/Reset/Request` , data)
+  }
+  verifyAccount(data:any ):Observable<any>{
+    return this._HttpClient.put(`Users/verify` , data)
+  }
+
+
+
+
 
 }
 

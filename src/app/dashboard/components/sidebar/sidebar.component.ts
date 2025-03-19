@@ -1,13 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { Component, Output, EventEmitter  } from '@angular/core';
 import { Router , ActivatedRoute } from '@angular/router';
 
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { Imenu } from 'src/app/core/interFaces/imenu';
+import { IMenu } from 'src/app/dashboard/interFaces/imenu';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { ProfileService } from '../../services/profile.service';
-import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -16,119 +13,85 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  isHideText:boolean = false ;
+
+  @Output() booleanChange = new EventEmitter<boolean>();
+  isSidebarClick:boolean = false
+  isAdmin:boolean =false ;
+  isUser:boolean =false ;
+  menu : IMenu[] =[]
 
 
-  constructor(private activatedRoute: ActivatedRoute ,private _ToastrService:ToastrService
-    , public dialog: MatDialog , private _ProfileService:ProfileService
-  ) {
-  //  this.sendDataToParent()
-  // title from url to access  active class
+  constructor(private _ActivatedRoute: ActivatedRoute ,
+    private _ProfileService:ProfileService
+    , public dialog: MatDialog
+  ) { }
 
+  ngOnInit(): void {
+    if(localStorage.getItem('role') === 'SuperAdmin'){
+      this.isAdmin=true
+      this.menu=this.adminMenu
+    }
+    else{
+      this.isUser=true
+      this.menu=this.userMenu
+    }
+  }
 
-   }
-
-
-
-  menu : Imenu[] =[
-    {
-     title: 'home' ,
-     icon : 'fa-home' ,
-     menuLink : '/dashboard/home' ,
-     isActive: true,
-    } ,
-    {
-      title: 'Users' ,
-      icon : 'fa-user-group' ,
-      menuLink : '/dashboard/admin/users' ,
-      isActive:this.isAdmin() ,
-     } ,
-    {
-     title: 'Recipes' ,
-     icon : ' fa-utensils' ,
-     menuLink : '//dashboard/admin/recipes' ,
-     isActive: this.isAdmin()  ,
-    } ,
-    {
-      title: 'Categories' ,
-      icon : 'fa-table-cells' ,
-      menuLink : '/dashboard/admin/categories' ,
-      isActive: this.isAdmin()  ,
-     } ,
-
-
-    //  {
-    //   title: 'Change Password' ,
-    //   icon : 'fa-unlock-keyhole' ,
-    //   menuLink : '/dashboard/admin/users' ,
-    //   isActive:this.isAdmin() ,
-    //  } ,
-    //  {
-    //   title: 'LogOut' ,
-    //   icon : 'fa-right-from-bracket' ,
-    //   menuLink : '/auth' ,
-    //   isActive:this.isAdmin() ,
-
-    //  } ,
-     // ----------------------------
-
+  adminMenu: IMenu[] =[
      {
-      // user Recipes
+       title: 'Users' ,
+       icon : 'fa-user-group' ,
+       menuLink : '/dashboard/admin/users' ,
+      } ,
+     {
+      title: 'Recipes' ,
+      icon : ' fa-utensils' ,
+      menuLink : '/dashboard/admin/recipes' ,
+     } ,
+     {
+       title: 'Categories' ,
+       icon : 'fa-table-cells' ,
+       menuLink : '/dashboard/admin/categories' ,
+      } ,
+
+  ]
+
+  userMenu: IMenu[] =[
+    {
       title: 'Recipes' ,
       icon : 'fa-utensils' ,
       menuLink : '/dashboard/user/user-recipes' ,
-      isActive: this.isUser() ,
      } ,
      {
       title: 'Favorites' ,
       icon : 'fa-heart' ,
       menuLink : '/dashboard/user/favorites' ,
-      isActive:  this.isUser() ,
      } ,
 
-
-
-
   ]
-
-
-  isAdmin():boolean { return localStorage.getItem('role') === 'SuperAdmin'? true : false  }
-  isUser():boolean { return localStorage.getItem('role') === 'SystemUser'? true : false }
 // ----------------------------------
 
+
+ toggleSidebarWidth(): void {
+    this.isSidebarClick = !this.isSidebarClick
+    this.booleanChange.emit(this.isSidebarClick);
+  }
+
  onOpenChangePasswordDialog(){
-    console.log("hey");
-    const dialogRef =  this.dialog.open(ChangePasswordComponent  )
+    const dialogRef =  this.dialog.open(ChangePasswordComponent )
     dialogRef.afterClosed().subscribe(result =>{
-      console.log(`${result} After`);
+      // console.log(`${result} After`);
       if(result){
-        console.log('send data');
+        // console.log('send data');
       }
     })
 
   }
 
-
-
-
-
-
-// -----------------------------------
-
-  onHide(){
-    this.isHideText=!this.isHideText;
-   this.sendDataToParent()
+  logOut():void{
+    this._ProfileService.logOut()
   }
 
 
-  @Output() dataToParent = new EventEmitter<any>();  // Using 'any' type for an object
-  sendDataToParent() {
-    const data = {
-      isHide: this.isHideText ,
-
-    };
-    this.dataToParent.emit(data);  // Emit the object containing multiple data points
-  }
-  // --------------------------------------------------
 
 }

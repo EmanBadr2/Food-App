@@ -11,8 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { IRecipesData  , ICategoriesAndTags} from '../../models/recipes'
 import { DeleteItemComponent } from 'src/app/dashboard/components/delete-item/delete-item.component';
-import { NoDataComponent } from 'src/app/shared/components/no-data/no-data.component';
-
+import { NoDataComponent } from 'src/app/dashboard/components/no-data/no-data.component';
 
 
 

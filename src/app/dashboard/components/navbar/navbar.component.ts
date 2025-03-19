@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { HelperService } from 'src/app/shared/services/helper.service';
-
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-navbar',
@@ -11,19 +13,11 @@ export class NavbarComponent {
   userName:string=''
   imagePath:string | null=''
   baseUrl:string = 'https://upskilling-egypt.com:3006/';
-  constructor(private _HelperService:HelperService){
-
+  constructor(private _HelperService:HelperService , private _Router:Router ,
+    public dialog: MatDialog
+  ){
     this.onGettingCurrentUser()
   }
-
-// ---
-  receivedData: any;  // Variable to hold the received data from the child
-  handleDataFromChild(data: any) {
-    this.receivedData = data;  // Receive the object from the child component
-  }
-
-
-
 
   onGettingCurrentUser(){
     this._HelperService.onGettingCurrentUser().subscribe({
@@ -38,4 +32,23 @@ export class NavbarComponent {
       }
     })
   }
+
+
+  logOut():void{
+     localStorage.removeItem('userToken')
+     localStorage.removeItem('role')
+    this._Router.navigate(['/auth'])
+  }
+
+ onOpenChangePasswordDialog(){
+    const dialogRef =  this.dialog.open(ChangePasswordComponent )
+    dialogRef.afterClosed().subscribe(result =>{
+      // console.log(`${result} After`);
+      if(result){
+        // console.log('send data');
+      }
+    })
+
+  }
+
 }
