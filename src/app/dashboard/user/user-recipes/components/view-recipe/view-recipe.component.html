@@ -1,33 +1,34 @@
+<div class=" row py-2  m-auto">
+    <div class="p-1 ">
 
-  <div class=" row py-2  m-auto">
-    <div class="p-3 ">
-
-    <div class=" d-flex align-items-center justify-content-between ">
+    <div class=" d-flex align-items-center justify-content-between position-relative p-2" >
       <h5 class="pe-2">Recipe Details</h5>
-       <i class="fa-solid fa-close text-danger  p-1 border rounded-circle border-danger" mat-dialog-close=""></i>
+      <button class="position-absolute top-0 end-0 bg-transparent"  matDialogClose >
+        <i class="fa-solid fa-xmark  close-icon "   ></i>
+       </button>
     </div>
 
-    <div class=" text-center">
-      <img *ngIf="mydata.imagePath" width="350px" height="350px"
+    <div class=" text-center mx-5" >
+      <img *ngIf="mydata.imagePath" width="250px" height="250px"
       [src]="baseUrl+mydata.imagePath"
-      class=" " alt="xx"  >
+      class=" rounded mx-3" alt="xx"  >
 
-      <img *ngIf="!mydata.imagePath" width="350px" height="350px"
+      <img *ngIf="!mydata.imagePath" width="250px" height="250px"
        src="../../../../assets/img/notfoundFood.jpeg"
-      class="" alt="xx" >
+      class=" rounded mx-3" alt="xx" >
     </div>
 
-    <div>
-      <h5> Name : {{mydata.name}}</h5>
-       <span > Price : {{mydata.price}} <span>EG</span></span>
-      <h6 class="pb-0 mb-0">Type: {{mydata.tag.name}} </h6>
-       <h6 class="">{{mydata.description}}</h6>
+
+    <div mat-dialog-content  class=" m-auto ">
+       <h5 > Name : {{mydata.name}}</h5>
+      <h6 > Price : {{mydata.price}} <span>EG</span></h6>
+     <h6 class="pb-0 mb-0">Type: {{mydata.tag.name}} </h6>
     </div>
 
     <div class="line m-1"> </div>
 
-    <div  class=" ms-auto text-end m-1 " >
-      <button class="fav-btn  mt-2 bg-transparent"   (click)="onAddToFav(mydata.id)" > Favorite </button>
+    <div  class=" ms-auto text-end m-1 mt-2" >
+      <button class="primary-color"   (click)="onAddToFav(mydata.id)" > Favorite </button>
     </div>
 
    </div>

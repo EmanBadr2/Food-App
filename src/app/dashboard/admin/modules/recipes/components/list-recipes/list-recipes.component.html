@@ -1,6 +1,6 @@
 <section class="">
 
-  <div class="page-title ">
+  <div class="page-title p-3">
     <div class="row align-items-center justify-content-between p-2">
       <div class="col-8 px-3">
         <h3>Recipes <span> item</span></h3>
@@ -66,10 +66,10 @@
 
     </div>
   </div>
-<!-- 
+
   <div  *ngIf="showNoData" >
      <app-no-data></app-no-data>
-  </div> -->
+  </div>
 
   <table *ngIf="!showNoData"  class=" w-100 table table-striped text-center ">
 
@@ -85,8 +85,15 @@
     <tbody>
       <tr  *ngFor="let recipe of recipesList" >
         <td>{{recipe.name  }}</td>
-        <td class=" px-0 mx-0" >
-           <img *ngIf="recipe.imagePath"  [src]="baseUrl+recipe.imagePath" alt="xx" class="col-2  px-0 mx-0">
+        <td class=" col-2 "  >
+
+           <img *ngIf="recipe.imagePath"
+           [src]="baseUrl+recipe.imagePath"
+            alt="xx" class="w-50">
+
+           <img *ngIf="!recipe.imagePath"
+           src="../../../../assets/img/notfoundFood.jpeg"
+          class="w-50" alt="xx" >
          </td>
         <td>{{recipe.price }}</td>
         <td>{{recipe.description }}</td>

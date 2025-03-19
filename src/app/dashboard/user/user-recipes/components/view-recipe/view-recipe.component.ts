@@ -19,9 +19,7 @@ export class ViewRecipeComponent {
     public dialogRef: MatDialogRef<ViewRecipeComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
      private _UserFavService:UserFavService ,
-     private _ToastrService:ToastrService
-  ) {
-
+     private _ToastrService:ToastrService) {
     this.mydata=data
     console.log('mydata' , this.mydata);
   }
@@ -36,7 +34,7 @@ export class ViewRecipeComponent {
 
     this._UserFavService.onAddToFav(id).subscribe({
       next :(res)=>{
-        console.log(res);
+        // console.log(res);
        } ,
       error :(err)=>{
         console.log(err);

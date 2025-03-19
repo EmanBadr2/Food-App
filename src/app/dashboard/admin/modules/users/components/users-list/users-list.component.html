@@ -1,6 +1,6 @@
 <section class="">
 
-  <div class="page-title ">
+  <div class="page-title p-3 ">
     <div class="row align-items-center justify-content-between p-2">
       <div class="col-8 px-3">
         <h3>Users<span> List</span></h3>
@@ -81,9 +81,14 @@
         <td>{{ user.email}}</td>
         <td>{{ user.phoneNumber}}</td>
 
-        <td class=" px-0 mx-0" >
+        <td class="col-2 " >
+
            <img *ngIf="user.imagePath"  [src]="baseUrl+user.imagePath"
-            alt="xx" class="col-2  px-0 mx-0">
+            alt="xx" class="w-50 ">
+
+            <img *ngIf="!user.imagePath"
+            src="../../../../../../../assets/img/no-data.png"
+           class="col-3" alt="xx" >
          </td>
         <td>{{user.country}}</td>
         <td>{{user.group.name }}</td>
