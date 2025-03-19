@@ -1,6 +1,11 @@
-// .row{
-//   font-family: Roboto;
-
+.row{
+  font-family: Roboto;
+.line{
+  border: 3px solid rgba(247, 247, 247, 1) ;
+ }
+.fav-btn {
+  border: 1px solid rgba(0, 146, 71, 1);
+}
 //   span{
 
 //     font-weight: 400;
@@ -34,4 +39,4 @@
 //       cursor: pointer;
 //     }
 //   }
-// }
+}

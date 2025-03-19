@@ -36,7 +36,8 @@ export class UserRecipesComponent  implements OnInit{
     categoryId:number = 0 ;
     recipesDetails : any = { pageSize:10 , pageNumber:1  }
 
-  constructor(private _HelperService:HelperService , private _UserFavService:UserFavService ,
+  constructor(private _HelperService:HelperService
+    , private _UserFavService:UserFavService ,
     private _ToastrService:ToastrService , public dialog: MatDialog ,
     private _Router: Router ){
      this.onGettingRecipesData( ) ;
@@ -101,6 +102,7 @@ export class UserRecipesComponent  implements OnInit{
 
     })
    }
+
 
 
    onOpenViewDialog(data : IRecipesData){

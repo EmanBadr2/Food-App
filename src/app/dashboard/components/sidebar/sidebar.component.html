@@ -44,7 +44,7 @@
 
   <li>
     <ng-container *ngIf="isAdmin">
-      <a  routerLinkActive=""  (click)="logOut()" >
+      <a  routerLinkActive=""  (click)="onOpenLogOutDialog()" >
         <span class="p-1 ">  <i class=" fa-solid fa-right-from-bracket"  ></i> </span>
          <span class="p-1 " *ngIf="!isSidebarClick" > LogOut</span>
       </a>

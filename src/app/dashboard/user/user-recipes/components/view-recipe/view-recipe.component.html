@@ -1,21 +1,20 @@
 
   <div class=" row py-2  m-auto">
-    <div class="w-100">
-
+    <div class="p-3 ">
 
     <div class=" d-flex align-items-center justify-content-between ">
-      <h5>Recipe Details</h5>
+      <h5 class="pe-2">Recipe Details</h5>
        <i class="fa-solid fa-close text-danger  p-1 border rounded-circle border-danger" mat-dialog-close=""></i>
     </div>
 
     <div class=" text-center">
-      <img *ngIf="mydata.imagePath"
+      <img *ngIf="mydata.imagePath" width="350px" height="350px"
       [src]="baseUrl+mydata.imagePath"
-      class="w-50 rounded" alt="xx" >
+      class=" " alt="xx"  >
 
-      <img *ngIf="!mydata.imagePath"
+      <img *ngIf="!mydata.imagePath" width="350px" height="350px"
        src="../../../../assets/img/notfoundFood.jpeg"
-      class="w-50 rounded" alt="xx" >
+      class="" alt="xx" >
     </div>
 
     <div>
@@ -24,6 +23,13 @@
       <h6 class="pb-0 mb-0">Type: {{mydata.tag.name}} </h6>
        <h6 class="">{{mydata.description}}</h6>
     </div>
+
+    <div class="line m-1"> </div>
+
+    <div  class=" ms-auto text-end m-1 " >
+      <button class="fav-btn  mt-2 bg-transparent"   (click)="onAddToFav(mydata.id)" > Favorite </button>
+    </div>
+
    </div>
 
 

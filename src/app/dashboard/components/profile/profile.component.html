@@ -6,14 +6,10 @@
       <div class="col-md-6 align-items-center  pt-5 ">
            <!-- baseUrl+recipe.imagePath -->
             <div class="  text-center">
-              <img  src="../../../../assets/img/Ellipse34.svg" alt="xx" class="col-2   px-0 mx-0"  >
+              <img  src="../../../../assets/img/Ellipse34.svg" alt="xx" class="col-4   px-0 mx-0"  >
 
               <p class=" text-muted fw-bold mt-2"> {{userForm.get('group')?.get('name')?.value}}</p>
             </div>
-
-       <div class=""   *ngIf="isEditMode" >
-         <p class=" primary-color ">Please.. Enter your password to be able to Update your data..  </p>
-       </div>
 
        </div>
 
@@ -40,6 +36,9 @@
            <input   formControlName="phoneNumber" class="form-control rounded-pill "  type="text"  >
          </div>
 
+         <div class="text-danger fw-light"   *ngIf="isEditMode" >
+          <p class=" primary-color ">Please.. Enter your password to be able to Update your data..  </p>
+        </div>
 
          <div *ngIf="isEditMode" class=" pb-3" >
           <label for=""> confirmPassword:</label>

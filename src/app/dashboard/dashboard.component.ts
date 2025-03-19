@@ -9,11 +9,12 @@ export class DashboardComponent {
   constructor(){
   }
 
-
+  // click in sidebar
   isSidebarClick:boolean=false
   onBooleanChange(value: boolean) {
     this.isSidebarClick = value;
   }
+  // -------------------
 
 
 

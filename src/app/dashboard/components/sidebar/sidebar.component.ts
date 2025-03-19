@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { IMenu } from 'src/app/dashboard/interFaces/imenu';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { ProfileService } from '../../services/profile.service';
+import { LogoutComponent } from '../logout/logout.component';
 
 
 @Component({
@@ -88,9 +89,14 @@ export class SidebarComponent {
 
   }
 
-  logOut():void{
-    this._ProfileService.logOut()
-  }
+ onOpenLogOutDialog(){
+    const dialogRef = this.dialog.open(LogoutComponent )
+    dialogRef.afterClosed().subscribe(result =>{
+       if(result){
+        }
+      })
+ }
+
 
 
 

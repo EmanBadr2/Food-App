@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HelperService } from 'src/app/shared/services/helper.service';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +14,9 @@ export class NavbarComponent {
   userName:string=''
   imagePath:string | null=''
   baseUrl:string = 'https://upskilling-egypt.com:3006/';
+
   constructor(private _HelperService:HelperService , private _Router:Router ,
-    public dialog: MatDialog
-  ){
+    public dialog: MatDialog ){
     this.onGettingCurrentUser()
   }
 
@@ -34,11 +35,11 @@ export class NavbarComponent {
   }
 
 
-  logOut():void{
-     localStorage.removeItem('userToken')
-     localStorage.removeItem('role')
-    this._Router.navigate(['/auth'])
-  }
+  // logOut():void{
+  //    localStorage.removeItem('userToken')
+  //    localStorage.removeItem('role')
+  //   this._Router.navigate(['/auth'])
+  // }
 
  onOpenChangePasswordDialog(){
     const dialogRef =  this.dialog.open(ChangePasswordComponent )
@@ -50,5 +51,14 @@ export class NavbarComponent {
     })
 
   }
+
+   onOpenLogOutDialog(){
+      const dialogRef = this.dialog.open(LogoutComponent )
+      dialogRef.afterClosed().subscribe(result =>{
+        if(result){
+        }
+      })
+     }
+
 
 }

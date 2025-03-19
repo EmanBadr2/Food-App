@@ -28,7 +28,7 @@ export class ChangePasswordComponent {
     ){ }
 
 
-      onOpenChangePassword(data:any):void{
+    onOpenChangePassword(data:any):void{
         this._ProfileService.onChangeUserPassWord(data.value).subscribe({
           next :(res)=>{
             console.log(res);

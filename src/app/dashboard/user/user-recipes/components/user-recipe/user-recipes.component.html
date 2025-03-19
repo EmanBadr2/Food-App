@@ -1,4 +1,4 @@
-<p>user-recipes works!</p>
+
 <section>
 
 
@@ -61,8 +61,16 @@
       <tr  *ngFor="let recipe of recipesList" >
         <td>{{recipe.name  }}</td>
         <td>{{recipe.price }}</td>
-        <td class=" w-25" >
-           <img *ngIf="recipe.imagePath"  [src]="baseUrl+recipe.imagePath" alt="xx" class="w-25">
+        <td class=" col-2" >
+           <!-- <img *ngIf="recipe.imagePath"  [src]="baseUrl+recipe.imagePath" alt="xx" class="w-25"> -->
+
+           <img *ngIf="recipe.imagePath"
+           [src]="baseUrl+recipe.imagePath"
+           class=" w-50" alt="xx"  >
+
+           <img *ngIf="!recipe.imagePath"
+            src="../../../../assets/img/notfoundFood.jpeg"
+           class="w-50" alt="xx" >
          </td>
 
         <td>{{recipe.tag.name}}</td>

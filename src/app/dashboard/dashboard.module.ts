@@ -13,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
      DeleteItemComponent,
      ProfileComponent,
      ChangePasswordComponent ,
-     NoDataComponent
+     NoDataComponent,
+     LogoutComponent
 
   ],
   imports: [
