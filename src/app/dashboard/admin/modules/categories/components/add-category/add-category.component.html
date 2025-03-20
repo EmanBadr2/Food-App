@@ -3,7 +3,7 @@
 
   <div class="mat-dialog-title d-flex align-items-center justify-content-between m-2 py-3">
     <h5> Category</h5>
-    <button class="bg-transparent"  (click)="onCloseDialog()"  [mat-dialog-close] >
+    <button class="bg-transparent"  mat-dialog-close >
       <i class="fa-solid fa-xmark  close-icon "   ></i>
     </button>
   </div>
@@ -13,7 +13,7 @@
     placeholder="Category Name" name="CategoryName" [(ngModel)]="data.name">
   </div>
 
-  <div class="line m-1 " ></div>
+  <!-- <div class="line m-1 " ></div> -->
 
   <div class="  text-end  p-3 pt-1"  *ngIf="!data.isReadOnly">
     <button  class="btn btn-success" [mat-dialog-close]="data">Save</button>
