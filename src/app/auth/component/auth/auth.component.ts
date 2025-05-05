@@ -35,7 +35,7 @@ sendData(myForm : FormGroup){
       this._toastr.error(err.error.message , 'Error ')
      } ,
     complete :()=> {
-       this._toastr.success('YouR Logging is ', 'Success');
+       this._toastr.success(' You have successfully logged in.', 'Success');
        this._Router.navigate(['/dashboard']) ;
      } ,
    })
